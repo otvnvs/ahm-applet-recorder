@@ -55,7 +55,7 @@ import {
   saveAudioTrack, 
   getAudioTrack, 
   deleteAudioTrack 
-} from './util/audioDb'
+} from './util/audioDb.js'
 
 const isRecording = ref(false)
 const statusMessage = ref('Ready to record')
