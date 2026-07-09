@@ -56,6 +56,7 @@ import {
   getAudioTrack, 
   deleteAudioTrack 
 } from './util/audioDb.js'
+import {requestMicrophoneClearance} from './util/permissions.js'
 
 const isRecording = ref(false)
 const statusMessage = ref('Ready to record')
@@ -96,6 +97,7 @@ const syncTracksToStorage = () => {
 }
 
 async function startRecording() {
+  if(!(await requestMicrophoneClearance())){/*return*/};
   audioChunks = []
   try {
     streamReference = await navigator.mediaDevices.getUserMedia({ audio: true })
